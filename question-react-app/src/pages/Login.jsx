@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Button from "../components/Button"; // Button 컴포넌트 불러오기
+import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { login } from "../apis/user";
-import { ReactComponent as Logo } from "../assets/logo.svg"; // 로고 파일을 React 컴포넌트로 불러오기
+import { ReactComponent as Logo } from "../assets/logo.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function Login() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/");
+      navigate("/main"); // 로그인 되어 있다면 메인 페이지로 이동
     }
   }, [isLoggedIn, navigate]);
 
@@ -23,6 +23,7 @@ function Login() {
       await login(email, password);
       alert("로그인 성공");
       setLogin();
+      navigate("/main"); // 로그인 후 메인 페이지로 이동
     } catch (error) {
       alert("로그인 실패");
     }
@@ -47,9 +48,7 @@ function Login() {
           />
         </InputWrapper>
         <ButtonWrapper>
-          {/* 로그인 버튼은 핑크색 (green prop 없음) */}
           <Button onClick={handleLogin}>로그인</Button>
-          {/* 회원가입 버튼은 초록색 (green prop 전달) */}
           <Button onClick={() => navigate("/signup")} green>
             회원가입
           </Button>
@@ -61,17 +60,15 @@ function Login() {
 
 export default Login;
 
+// 스타일 컴포넌트 정의
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: flex-start; /* 수직 상단 정렬 */
   background: #ffffff;
-  font-size: 60px;
-  font-style: italic;
-  font-weight: 900;
-  line-height: 1.2;
+  padding-top: 100px; /* 상단에 약간의 여백 */
 `;
 
 const LoginContainer = styled.div`
@@ -82,14 +79,14 @@ const LoginContainer = styled.div`
 `;
 
 const LogoWrapper = styled.div`
-  margin-bottom: 20px; /* 로고와 텍스트 사이에 간격을 줍니다 */
+  margin-bottom: 10px; /* 로고와 텍스트 사이의 간격을 줄입니다 */
 `;
 
 const Title = styled.h1`
   font-weight: bold;
-  margin-bottom: 32px;
+  margin-bottom: 24px; /* 타이틀과 입력란 사이의 간격을 줄입니다 */
   color: #000000;
-  font-size: 60px;
+  font-size: 48px;
   font-style: italic;
   font-weight: 900;
   line-height: 1.2;
@@ -123,5 +120,5 @@ const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px; /* 버튼 간의 간격 */
-  margin-top: 24px;
+  margin-top: 16px; /* 버튼 영역 위쪽 여백을 줄여 전체를 위로 올립니다 */
 `;
