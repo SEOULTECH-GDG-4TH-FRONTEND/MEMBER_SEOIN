@@ -27,8 +27,7 @@ root.render(
           <Route path="/question" element={<Question />} />
           <Route path="/answer" element={<Answer />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/main" element={<App />} />{" "}
-          {/* App을 /main 경로로 연결 */}
+          <Route path="/main" element={<App />} />
         </Routes>
       </Router>
     </AuthProvider>

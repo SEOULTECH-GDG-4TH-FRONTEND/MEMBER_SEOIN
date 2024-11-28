@@ -14,7 +14,7 @@ function Login() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/main"); // 로그인 되어 있다면 메인 페이지로 이동
+      navigate("/main"); // 로그인되어 있다면 메인 페이지로 이동
     }
   }, [isLoggedIn, navigate]);
 
@@ -33,7 +33,7 @@ function Login() {
     <Wrapper>
       <LoginContainer>
         <LogoWrapper>
-          <Logo width="100" height="100" /> {/* 로고 크기 조정 */}
+          <Logo width="100" height="100" />
         </LogoWrapper>
         <Title>Log in</Title>
         <InputWrapper>
